@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->integer('matricula');
             $table->integer('date-birth');
-            $table->integer('turma_id',3);
             $table->timestamps();
         });
     }

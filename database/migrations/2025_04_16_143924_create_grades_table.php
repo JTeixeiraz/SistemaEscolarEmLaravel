@@ -13,11 +13,14 @@ return new class extends Migration
     {
         Schema::create('grades', function (Blueprint $table) {
             $table->id();
-            $table->foreign('aluno_id')->references('id')->on('students')->onDelete('cascade');
-            $table->foreign('disciplina_id')->references('id')->on('subjects')->onDelete('cascade');
+            $table->unsignedBigInteger('aluno_id');
+            $table->unsignedBigInteger('disciplina_id');
             $table->string('avaliação');
             $table->float('nota');
             $table->timestamps();
+
+            $table->foreign('aluno_id')->references('id')->on('students')->onDelete('cascade');
+            $table->foreign('disciplina_id')->references('id')->on('subjects')->onDelete('cascade');
         });
     }
 

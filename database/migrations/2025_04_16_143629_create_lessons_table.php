@@ -13,13 +13,17 @@ return new class extends Migration
     {
         Schema::create('lessons', function (Blueprint $table) {
             $table->id();
-            $table->foreign('turma_id')->references('id')->on('classes')->onDelete('cascade');
-            $table->foreign('disciplina_id')->references('id')->on('subjects')->onDelete('cascade');
-            $table->foreign('professor_id')->references('id')->on('teachers')->onDelete('cascade');
+            $table->unsignedBigInteger('turma_id');
+            $table->unsignedBigInteger('disciplina_id');
+            $table->unsignedBigInteger('professor_id');
             $table->dateTime('data_hora_inicio');
             $table->dateTime('data_hora_fim');
             $table->string('conteudo');
             $table->timestamps();
+
+            $table->foreign('turma_id')->references('id')->on('classes')->onDelete('cascade');
+            $table->foreign('disciplina_id')->references('id')->on('subjects')->onDelete('cascade');
+            $table->foreign('professor_id')->references('id')->on('teachers')->onDelete('cascade');
         });
     }
 

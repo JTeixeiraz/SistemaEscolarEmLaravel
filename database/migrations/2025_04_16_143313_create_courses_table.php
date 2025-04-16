@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('nome');
             $table->string('desc');
+            $table->unsignedBigInteger('curso_id');
+            $table->unsignedBigInteger('disciplina_id');
             $table->foreign('curso_id')->references('id')->on('courses')->onDelete('cascade');
             $table->foreign('disciplina_id')->references('id')->on('subjects')->onDelete('cascade');
             $table->date('semestre');
